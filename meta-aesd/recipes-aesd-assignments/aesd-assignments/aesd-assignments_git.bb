@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-nestoralfar
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "4a9dd9cde7667b915d88f0440a1044ac590daf7f"
+SRCREV = "50c6a69ee82408f88f996cddef9530572e04b1f6"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
@@ -21,11 +21,6 @@ S = "${WORKDIR}/git/server"
 
 FILES:${PN} += "${bindir}/aesdsocket"
 FILES:${PN} += "${bindir}/aesdsocket-start-stop.sh"
-# FILES:${PN} += "${sysconfdir}/init.d/aesdsocket-start-stop.sh"
-# FILES:${PN} += "${sysconfdir}/aesdsocket-start-stop.sh"
-
-# maybe works?
-# FILES:${PN} += "${bindir}/aesdsocket-start-stop.sh ${bindir}/aesdsocket"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
@@ -56,6 +51,5 @@ do_install () {
     install -m 0755 ${S}/aesdsocket ${D}${bindir}/
 
     install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d
-    # install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d/
+    install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d/
 }
